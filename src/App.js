@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
+import Square from './components/Square';
 import './App.css';
 
+
 function App() {
+
+  const items = useSelector(state => state.game.items)
+  console.log(items)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>TicTacToe Game</h1>
+      <div>
+        <div className='col'>
+          <Square className='bottom right'/>
+          <Square className='bottom right'/>
+          <Square className='bottom'/>
+        </div>
+        <div className='col'>
+          <Square className='bottom right'/>
+          <Square className='bottom right'/>
+          <Square className='bottom'/>
+        </div>
+        <div className='col'>
+          <Square className='right'/>
+          <Square className='right'/>
+          <Square />
+        </div>
+      </div>
     </div>
   );
 }
