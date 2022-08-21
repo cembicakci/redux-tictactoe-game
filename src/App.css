@@ -28,7 +28,9 @@ body{
 }
 
 .square{
+  min-width: 100px;
+  min-height: 100px;
   padding: 30px;
-  font-size: 36px;
+  font-size: 24px;
   text-align: center;
 }
