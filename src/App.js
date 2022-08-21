@@ -1,26 +1,70 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Square from './components/Square';
 import { changeCursor } from './redux/gameSlice';
 import './App.css';
 
-const clearState = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "];
+const clearState = ["", "", "", "", "", "", "", "", "", ""];
 
 function App() {
 
   const dispatch = useDispatch();
-  const items = useSelector(state => state.game.items)
   const cursor = useSelector(state => state.game.cursor)
-
   const [gameState, setGameState] = useState(clearState);
+  const [count, setCount] = useState(0);
 
   function handleClick(i) {
-    dispatch(changeCursor())
     let strings = Array.from(gameState);
+    if (strings[i]) return;
     strings[i] = cursor ? 'X' : 'O';
     setGameState(strings)
+    dispatch(changeCursor())
+    setCount(count + 1);
 
+  }
 
+  const clearGame = () => {
+    setGameState(clearState)
+  }
+
+  useEffect(() => {
+    let winner = checkWinner();
+    if (winner) {
+      setTimeout(() => {
+        clearGame();
+        setCount(0)
+        alert(`${winner} won the Game!`)
+      }, 200)
+      return;
+    }
+    if (count === 9) {
+      setTimeout(() => {
+        clearGame();
+        setCount(0)
+        alert('It is a draw!')
+      }, 200)
+
+    }
+  }, [gameState])
+
+  const checkWinner = () => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+        return gameState[a];
+      }
+    }
+    return null;
   }
 
   return (
