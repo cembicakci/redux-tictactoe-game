@@ -6,7 +6,8 @@
 Live: https://cembicakci.github.io/redux-tictactoe-game
 
 
-## Usage
+## Usage
+
 ```
 npm install
 npm start 
