@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap);*{box-sizing:border-box;margin:0;padding:0}body{font-family:Open Sans,sans-serif}.App{flex-direction:column;height:70vh;justify-content:space-around}.App,.col{align-items:center;display:flex}.col{justify-content:center}.bottom{border-bottom:5px solid #000}.right{border-right:5px solid #000}.square{font-size:24px;min-height:100px;min-width:100px;padding:30px;text-align:center}
+/*# sourceMappingURL=main.2c862fd1.css.map*/

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/redux-tictactoe-game/static/css/main.2c862fd1.css",
+    "main.js": "/redux-tictactoe-game/static/js/main.cb005dd2.js",
+    "index.html": "/redux-tictactoe-game/index.html",
+    "main.2c862fd1.css.map": "/redux-tictactoe-game/static/css/main.2c862fd1.css.map",
+    "main.cb005dd2.js.map": "/redux-tictactoe-game/static/js/main.cb005dd2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c862fd1.css",
+    "static/js/main.cb005dd2.js"
+  ]
+}
