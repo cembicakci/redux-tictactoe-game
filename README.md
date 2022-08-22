@@ -3,7 +3,7 @@
 ![ss](./img/ss1.png)
 ![ss](./img/ss2.png)
 
-Live: 
+Live: https://cembicakci.github.io/redux-tictactoe-game
 
 
 ## Usage
