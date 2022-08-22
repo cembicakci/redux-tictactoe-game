@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Square from './components/Square';
-import { changeCursor } from './redux/gameSlice';
+import { changeCursor, changeItems } from './redux/gameSlice';
 import './App.css';
 
-const clearState = ["", "", "", "", "", "", "", "", "", ""];
+// const clearState = ["", "", "", "", "", "", "", "", "", ""];
 
 function App() {
 
   const dispatch = useDispatch();
   const cursor = useSelector(state => state.game.cursor)
-  const [gameState, setGameState] = useState(clearState);
+  const items = useSelector(state => state.game.items)
+
+  const [gameState, setGameState] = useState(items);
   const [count, setCount] = useState(0);
 
   function handleClick(i) {
@@ -19,19 +21,21 @@ function App() {
     strings[i] = cursor ? 'X' : 'O';
     setGameState(strings)
     dispatch(changeCursor())
+    // dispatch(changeItems())
     setCount(count + 1);
 
   }
 
-  const clearGame = () => {
-    setGameState(clearState)
-  }
+  // const clearGame = () => {
+  //   setGameState(clearState)
+  // }
 
   useEffect(() => {
     let winner = checkWinner();
     if (winner) {
       setTimeout(() => {
-        clearGame();
+        // clearGame();
+        setGameState(dispatch(changeItems()))
         setCount(0)
         alert(`${winner} won the Game!`)
       }, 200)
@@ -39,7 +43,8 @@ function App() {
     }
     if (count === 9) {
       setTimeout(() => {
-        clearGame();
+        // clearGame();
+        setGameState(dispatch(changeItems()))
         setCount(0)
         alert('It is a draw!')
       }, 200)
